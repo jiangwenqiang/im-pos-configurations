@@ -19,6 +19,13 @@ mapper:
       - com.inmarket.pos.data.util.MSMapper
     not-empty: false
     identity: MYSQL
+hystrix:
+    command:
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 25000
 ---
 spring:
   profiles: develop
