@@ -1,3 +1,5 @@
+server:
+  port: 8081
 spring:
   application:
     name: im-pos-service-commod    # 项目名称尽量用小写
