@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: im-pos-service-commod    # 项目名称尽量用小写
+  jmx:
+    default-domain: im-pos-service-commod
+  profiles:
+    active: develop
+logging:
+  grade:
+    root: INFO
+    tk.mybatis: TRACE
+impos:
+  location: /Users/elnino/Workspace/runtime/
+mybatis:
+    type-aliases-package: com.inmarket.pos.model
+    mapper-locations: classpath*:mapper/*.xml
+mapper:
+    mappers:
+      - com.inmarket.pos.data.util.MSMapper
+    not-empty: false
+    identity: MYSQL
+---
+spring:
+  profiles: develop
+eureka:
+  client:
+    serviceUrl:
+      #defaultZone: http://localhost:8080/im-pos-service-registeration/eureka/    # 指定注册中心的地址
+      defaultZone: http://localhost:8080/eureka/    # 指定注册中心的地
+  instance:
+      preferIpAddress: true
+
+
+---
+spring:
+  profiles: product
+  datasource:
+      druid:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:mposdb}
+        username: ${MYSQL_USERNAME:jack}
+        password: ${MYSQL_PASSWORD:123}
+        test-while-idle: true
+        validation-query: SELECT 1
+        initial-size: 1
+        min-idle: 1
+        max-active: 40
+        test-on-borrow: true
+        filters: config
+        connectionProperties: config.decrypt=true;config.decrypt.key=${MYSQL_PUBLICKEY}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://registeration:8080/im-pos-service-registeration/eureka/    # 指定注册中心的地址
+  instance:
+      preferIpAddress: true
