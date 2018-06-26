@@ -1,0 +1,74 @@
+server:
+  port: 8182
+  tomcat:
+    accept-count: 1000 
+    max-threads: 1000
+    max-connections: 2000
+spring:
+  application:
+    name: im-pos-service-commod    # 项目名称尽量用小写
+  jmx:
+    default-domain: im-pos-service-commod
+  profiles:
+    active: develop
+logging:
+  level:
+    root: INFO
+    tk.mybatis: TRACE
+mybatis:
+    type-aliases-package: com.inmarket.pos.model
+    mapper-locations: classpath*:mapper/*.xml
+impos:
+   location: /opt/impos/
+mapper:
+    mappers:
+      - com.inmarket.pos.data.util.MSMapper
+    not-empty: false
+    identity: ORACLE
+
+---
+spring:
+  profiles: develop
+  datasource:
+      druid:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/impos?useSSL=false
+        username: jack 
+        password: 123
+        initial-size: 1
+        min-idle: 1
+        max-active: 40
+        test-while-idle: true
+        validation-query: SELECT 1
+        test-on-borrow: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8180/eureka/    # 指定注册中心的地址
+  instance:
+      preferIpAddress: true
+
+
+---
+spring:
+  profiles: product
+  datasource:
+      druid:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:mposdb}
+        username: ${MYSQL_USERNAME:jack}
+        password: ${MYSQL_PASSWORD:123}
+        test-while-idle: true
+        validation-query: SELECT 1
+        initial-size: 1
+        min-idle: 1
+        max-active: 40
+        test-on-borrow: true
+        filters: config
+        connectionProperties: config.decrypt=true;config.decrypt.key=${MYSQL_PUBLICKEY}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://registeration:8180/im-pos-service-registeration/eureka/    # 指定注册中心的地址
+  instance:
+      preferIpAddress: true

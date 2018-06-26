@@ -1,0 +1,102 @@
+server:
+  port: 8184
+  tomcat:
+    accept-count: 1000 
+    max-threads: 1000
+    max-connections: 2000
+spring:
+  application:
+    name: im-pos-service-order    # 项目名称尽量用小写
+  jmx:
+    default-domain: im-pos-service-order
+  profiles:
+    active: develop
+  jackson:
+    default-property-inclusion: NON_NULL
+logging:
+  level:
+    root: INFO
+    tk.mybatis: TRACE
+mybatis:
+    mapper-locations: classpath*:mapper/*.xml
+    type-aliases-package: com.inmarket.pos.data.entity
+impos:
+    location: /opt/impos/   
+mapper:
+    mappers:
+      - com.inmarket.pos.data.util.MSMapper
+    not-empty: false
+    identity: ORACLE 
+jedis:
+    host : 127.0.0.1
+    port : 6379
+    maxTotal: 100
+    maxIdle: 10
+    maxWaitMillis : 100000
+---
+spring:
+  profiles: develop
+  datasource:
+      druid:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/impos
+        username: jack
+        password: 123
+        initial-size: 1
+        min-idle: 1
+        max-active: 30
+        test-on-borrow: true
+        test-while-idle: true
+        validation-query: select 1
+        stat-view-servlet:
+          allow: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8180/eureka/    # 指定注册中心的地址
+  instance:
+      preferIpAddress: true
+      statusPageUrlPath: ${server.context-path}/info
+      healthCheckUrlPath: ${server.context-path}/health
+jedis:
+    host : 127.0.0.1
+    port : 6379
+    maxTotal: 100
+    maxIdle: 10
+    maxWaitMillis : 100000
+    password : 123456
+
+---
+spring:
+  profiles: product
+  datasource:
+      druid:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:mposdb}
+        username: ${MYSQL_USERNAME:jack}
+        password: ${MYSQL_PASSWORD:123}
+        test-while-idle: true
+        validation-query: SELECT 1
+        initial-size: 1
+        min-idle: 1
+        max-active: 30
+        test-on-borrow: true
+        filters: config
+        connectionProperties: config.decrypt=true;config.decrypt.key=${MYSQL_PUBLICKEY}
+        stat-view-servlet:
+          allow: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://registeration:8180/im-pos-service-registeration/eureka/    # 指定注册中心的地址
+  instance:
+      preferIpAddress: true
+
+jedis:
+    host : ${REDIS_HOST:127.0.0.1}
+    port : ${REDIS_PORT:6379}
+    maxTotal: 100
+    maxIdle: 10
+    maxWaitMillis : 100000
+    password: ${REDIS_PASSWORD:123456}
+

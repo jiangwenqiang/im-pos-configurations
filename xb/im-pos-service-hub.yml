@@ -1,0 +1,63 @@
+server:
+  port: 8199
+  context-path: /impos
+  tomcat:
+    accept-count: 1000 
+    max-threads: 1000
+    max-connections: 2000
+spring:
+  application:
+    name: im-pos-service-hub
+  jmx:
+    default-domain: im-pos-service-hub
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8180/eureka/
+  instance:
+    hostname: im-pos-service-hub                 # 此处，preferIpAddress不设置或者设为false，不能设为true，否则影响turbine的测试。turbine存在的问题：eureka.instance.hostname一致时只能检测到一个节点，会造成turbine数据不完整
+zuul:
+  host:
+    connect-timeout-millis: 5000
+    socket-timeout-millis: 10000
+    max-per-route-connections: 1000
+    max-total-connections: 1000
+  #prefix: /impos
+  routes:
+    commod:
+      path: /commod/**
+      serviceId: im-pos-service-commod
+    promotion:
+      path: /promotion/**
+      serviceId: im-pos-service-promotion
+    order:
+      path: /order/**
+      serviceId: im-pos-service-order
+    management:
+      path: /management/**
+      serviceId: im-pos-service-management
+    parameter:
+      path: /parameter/**
+      serviceId: im-pos-service-parameter
+    trace:
+      path: /trace/**
+      serviceId: im-pos-service-trace
+    commodex:
+      path: /commodex/**
+      serviceId: im-pos-service-commod-extension
+    integration:
+      path: /integration/**
+      serviceId: im-pos-service-entrance
+    coupon:
+      path: /coupon/**
+      serviceId: im-pos-service-coupon
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 10000
+    threadpool:  
+        default:  
+            coreSize: 500

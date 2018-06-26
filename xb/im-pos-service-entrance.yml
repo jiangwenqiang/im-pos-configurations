@@ -1,0 +1,53 @@
+server:
+  port: 8181
+  tomcat:
+    accept-count: 1000 
+    max-threads: 1000
+    max-connections: 2000
+spring:
+  application:
+    name: im-pos-service-entrance
+  jmx:
+    default-domain: im-pos-service-entrance
+  jackson:
+    default-property-inclusion: NON_NULL
+  profiles:
+    active: develop
+ribbon:       #负载均衡
+  ReadTimeout: 20000
+  eureka:
+    enabled: true         # 默认为true。如果设置为false，Ribbon将不会从Eureka中获得服务列表，而是使用静态配置的服务列表。静态服务列表可使用：<client>.ribbon.listOfServers来指定。参考：http://projects.spring.io/spring-cloud/docs/1.0.3/spring-cloud.html#spring-cloud-ribbon-without-eureka
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+    command:
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 5000
+    threadpool:  
+      default:  
+        coreSize: 500
+---
+spring:
+  profiles: develop
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8180/eureka/
+  instance:
+    #hostname: im-pos-service-entrance#此处preferIpAddress不设置或者设为false不能设为true否则影响turbine的测试turbine存在的问题：eureka.instance.hostname一致时只能检测到一个节点，会造成turbine数据不完整
+   preferIpAddress: true
+
+---
+spring:
+  profiles: product
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://registeration:8180/im-pos-service-registeration/eureka/
+  instance:
+    hostname: im-pos-service-entrance                 # 此处，preferIpAddress不设置或者设为false，不能设为true，否则影响turbine的测试。turbine存在的问题：eureka.instance.hostname一致时只能检测到一个节点，会造成turbine数据不完整
