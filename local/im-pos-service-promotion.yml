@@ -1,9 +1,5 @@
 server:
   port: 8183
-  tomcat:
-    accept-count: 1000 
-    max-threads: 1000
-    max-connections: 2000
 spring:
   application:
     name: im-pos-service-promotion
@@ -28,7 +24,7 @@ mapper:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8080/eureka/    # 指定注册中心的地址
+      defaultZone: http://localhost:8180/eureka/    # 指定注册中心的地址
   instance:
       preferIpAddress: true
 jedis:
