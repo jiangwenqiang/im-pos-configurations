@@ -10,7 +10,7 @@ logging:
     root: INFO
     tk.mybatis: TRACE
 impos:
-  location: /opt/impos/
+  location: /Users/elnino/Workspace/runtime/
 mybatis:
     type-aliases-package: om.inmarket.pos.data.entity
     mapper-locations: classpath*:mapper/*.xml

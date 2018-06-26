@@ -7,9 +7,7 @@ spring:
   jmx:
     default-domain: im-pos-service-customer
 impos:
-  location: /root/opt/service/   
-  dataSources: default
-  store: store
+  location: /Users/elnino/Workspace/runtime/
 crm:
   property:
     url: http://106.14.126.191:9090/api/ 

@@ -17,7 +17,7 @@ mybatis:
     type-aliases-package: com.inmarket.pos.model
     mapper-locations: classpath*:mapper/*.xml
 impos:
-   location: /opt/impos/
+  location: /Users/elnino/Workspace/runtime/
 mapper:
     mappers:
       - com.inmarket.pos.data.util.MSMapper
