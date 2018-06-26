@@ -8,9 +8,9 @@ service:
     promotion: promotionservice1
 dataSources:
   - name: default
-    router: '01,02,03,04'
+    router: '01'
     driverClassName: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@192.168.102.15:1521:pos01
+    url: jdbc:oracle:thin:@192.168.100.83:1521:pos01
     username: minipos
     password: tjyt
     filters: encoding,stat,wall,log4j
@@ -24,7 +24,7 @@ dataSources:
     removeAbandoned: "true"
     removeAbandonedTimeout: "60"
   - name: ds02
-    router: '001,004,006,013,014,017,019'
+    router: '04'
     driverClassName: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@192.168.102.15:1521:pos01
     username: minipos
