@@ -1,9 +1,5 @@
 server:
   port: 8184
-  tomcat:
-    accept-count: 1000 
-    max-threads: 1000
-    max-connections: 2000
 spring:
   application:
     name: im-pos-service-order    # 项目名称尽量用小写
@@ -45,5 +41,5 @@ jedis:
     maxTotal: 100
     maxIdle: 10
     maxWaitMillis : 100000
-    password : 123456
+    #password : 123456
 
