@@ -1,9 +1,5 @@
 server:
   port: 8187
-  tomcat:
-    accept-count: 1000 
-    max-threads: 1000
-    max-connections: 2000
 spring:
   application:
     name: im-pos-service-common    # 项目名称尽量用小写
