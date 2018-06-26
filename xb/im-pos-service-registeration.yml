@@ -4,11 +4,6 @@ server:
 spring:
   jmx:
     default-domain: im-pos-service-registeration
-  profiles:
-    active: develop
----
-spring:
-  profiles: develop
 eureka:
   instance:
     hostname: localhost
@@ -18,16 +13,3 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}${server.context-path}/eureka/
-
----
-spring:
-  profiles: product
-eureka:
-  instance:
-    hostname: registeration
-    prefer-ip-address: false
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://registeration:${server.port}${server.context-path}/eureka/

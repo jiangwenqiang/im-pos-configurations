@@ -15,14 +15,13 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8180/eureka/
   instance:
-    hostname: im-pos-service-hub                 # 此处，preferIpAddress不设置或者设为false，不能设为true，否则影响turbine的测试。turbine存在的问题：eureka.instance.hostname一致时只能检测到一个节点，会造成turbine数据不完整
+    hostname: im-pos-service-hub
 zuul:
   host:
     connect-timeout-millis: 5000
     socket-timeout-millis: 10000
     max-per-route-connections: 1000
     max-total-connections: 1000
-  #prefix: /impos
   routes:
     commod:
       path: /commod/**
