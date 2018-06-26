@@ -1,0 +1,42 @@
+component:
+    access: njxb_access
+    commod: commodbusiness
+    promotion: salebusiness3
+    order: salebusiness4
+service:
+    order: orderservice1
+    promotion: promotionservice1
+dataSources:
+  - name: default
+    router: '01,02,03,04'
+    driverClassName: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@192.168.102.15:1521:pos01
+    username: minipos
+    password: tjyt
+    filters: encoding,stat,wall,log4j
+    connectionProperties: clientEncoding=GBK;serverEncoding=ISO-8859-1;druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    initialSize: '10'
+    minIdle: '10'
+    maxActive: '40'
+    validationQuery: SELECT 1 FROM DUAL
+    testOnBorrow: 'false'
+    testWhileIdle: 'true'
+    removeAbandoned: "true"
+    removeAbandonedTimeout: "60"
+  - name: ds02
+    router: '001,004,006,013,014,017,019'
+    driverClassName: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@192.168.102.15:1521:pos01
+    username: minipos
+    password: tjyt
+    filters: encoding,stat,wall,log4j
+    connectionProperties: clientEncoding=GBK;serverEncoding=ISO-8859-1;druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    initialSize: '1'
+    minIdle: '1'
+    maxActive: '1'
+    validationQuery: SELECT 1 FROM DUAL
+    testOnBorrow: 'false'
+    testWhileIdle: 'true'
+    removeAbandoned: "true"
+    removeAbandonedTimeout: "60"
+

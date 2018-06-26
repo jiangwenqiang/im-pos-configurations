@@ -1,0 +1,40 @@
+server:
+  port: 8183
+  tomcat:
+    accept-count: 1000 
+    max-threads: 1000
+    max-connections: 2000
+spring:
+  application:
+    name: im-pos-service-promotion
+  jmx:
+    default-domain: im-pos-service-promotion
+logging:
+  level:
+    root: INFO
+    tk.mybatis: TRACE
+impos:
+  location: /opt/impos/
+mybatis:
+    type-aliases-package: om.inmarket.pos.data.entity
+    mapper-locations: classpath*:mapper/*.xml
+
+mapper:
+    mappers:
+      - com.inmarket.pos.data.util.MSMapper
+    not-empty: false
+    identity: ORACLE
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8180/eureka/    # 指定注册中心的地址
+  instance:
+      preferIpAddress: true
+jedis:
+    host :  127.0.0.1
+    port : 6379
+    password: 123456
+    maxTotal: 100
+    maxIdle: 10
+    maxWaitMillis : 100000
+

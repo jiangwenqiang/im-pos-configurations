@@ -1,0 +1,28 @@
+server:
+  port: 8188
+spring:
+  application:
+    name: im-pos-service-coupon    # 项目名称尽量用小写
+  jmx:
+    default-domain: im-pos-service-coupon
+logging:
+  grade:
+    root: INFO
+    tk.mybatis: TRACE
+impos:
+  location: /opt/impos/
+mybatis:
+    type-aliases-package: om.inmarket.pos.data.entity
+    mapper-locations: classpath*:mapper/*.xml
+
+mapper:
+    mappers:
+      - com.inmarket.pos.data.util.MSMapper
+    not-empty: false
+    identity: ORACLE
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8180/eureka/    # 指定注册中心的地址
+  instance:
+      preferIpAddress: true

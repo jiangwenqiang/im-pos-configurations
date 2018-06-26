@@ -1,0 +1,35 @@
+server:
+  port: 8186
+spring:
+  application:
+    name: im-pos-service-parameter    # 项目名称尽量用小写
+  jmx:
+    default-domain: im-pos-service-parameter
+logging:
+  level:
+    root: INFO
+    tk.mybatis: TRACE
+mybatis:
+    promotionKind-aliases-package: com.inmarket.pos.model
+    mapper-locations: classpath*:mapper/*.xml
+impos:
+    location: /opt/impos/
+mapper:
+    mappers:
+      - com.inmarket.pos.data.util.MSMapper
+    not-empty: false
+    identity: ORACLE 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8180/eureka/    # 指定注册中心的地址
+  instance:
+      preferIpAddress: true
+jedis:
+    host : 127.0.0.1
+    port : 6379
+    maxTotal: 100
+    maxIdle: 10
+    maxWaitMillis : 100000
+    password: 123456
+

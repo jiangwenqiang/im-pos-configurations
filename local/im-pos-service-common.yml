@@ -1,0 +1,21 @@
+server:
+  port: 8187
+  tomcat:
+    accept-count: 1000 
+    max-threads: 1000
+    max-connections: 2000
+spring:
+  application:
+    name: im-pos-service-common    # 项目名称尽量用小写
+  jmx:
+    default-domain: im-pos-service-commod
+impos:
+  location: /opt/impos/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8180/eureka/    # 指定注册中心的地址
+  instance:
+      preferIpAddress: true
+      statusPageUrlPath: ${server.context-path}/info
+      healthCheckUrlPath: ${server.context-path}/health

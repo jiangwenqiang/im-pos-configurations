@@ -1,0 +1,29 @@
+server:
+  port: 8188
+  context-path: /im-pos-service-customer
+spring:
+  application:
+    name: im-pos-service-customer    # 项目名称尽量用小写
+  jmx:
+    default-domain: im-pos-service-customer
+impos:
+  location: /root/opt/service/   
+  dataSources: default
+  store: store
+crm:
+  property:
+    url: http://106.14.126.191:9090/api/ 
+    key: 60001
+    token: 4FD3A529430CD618
+    version: 2.0
+    format: json
+    ReadTimeOut : 3000
+    ConnectTimeOut : 2000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8180/im-pos-service-registeration/eureka/    # 指定注册中心的地址
+  instance:
+      preferIpAddress: true
+      statusPageUrlPath: ${server.context-path}/info
+      healthCheckUrlPath: ${server.context-path}/health
