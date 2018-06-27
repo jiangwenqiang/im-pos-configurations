@@ -12,7 +12,6 @@ impos:
 mybatis:
     type-aliases-package: om.inmarket.pos.data.entity
     mapper-locations: classpath*:mapper/*.xml
-
 mapper:
     mappers:
       - com.inmarket.pos.data.util.MSMapper

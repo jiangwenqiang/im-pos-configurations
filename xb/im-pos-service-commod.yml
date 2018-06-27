@@ -14,9 +14,9 @@ impos:
   location: /opt/impos/
 mapper:
   mappers:
-      - com.inmarket.pos.data.util.MSMapper
-    not-empty: false
-    identity: ORACLE
+    - com.inmarket.pos.data.util.MSMapper
+  not-empty: false
+  identity: ORACLE
 management:
   security:
     enabled: false
