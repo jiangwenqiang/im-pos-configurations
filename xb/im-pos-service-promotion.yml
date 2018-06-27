@@ -3,6 +3,9 @@ spring:
     name: im-pos-service-promotion
   jmx:
     default-domain: im-pos-service-promotion
+  redis:
+    host: 127.0.0.1
+    password: 123456
 logging:
   level:
     root: INFO
@@ -12,7 +15,6 @@ impos:
 mybatis:
     type-aliases-package: om.inmarket.pos.data.entity
     mapper-locations: classpath*:mapper/*.xml
-
 mapper:
     mappers:
       - com.inmarket.pos.data.util.MSMapper
@@ -24,11 +26,4 @@ eureka:
       defaultZone: http://localhost:8180/eureka/    # 指定注册中心的地址
   instance:
       preferIpAddress: true
-jedis:
-    host :  127.0.0.1
-    port : 6379
-    password: 123456
-    maxTotal: 100
-    maxIdle: 10
-    maxWaitMillis : 100000
 
