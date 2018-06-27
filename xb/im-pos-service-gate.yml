@@ -1,5 +1,4 @@
 server:
-  port: 8181
   context-path: /impos
 spring:
   application:

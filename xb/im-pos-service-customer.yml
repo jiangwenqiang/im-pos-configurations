@@ -1,5 +1,4 @@
 server:
-  port: 8184
   context-path: /im-pos-service-customer
 spring:
   application:

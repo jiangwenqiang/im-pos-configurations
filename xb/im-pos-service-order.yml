@@ -1,5 +1,3 @@
-server:
-  port: 8184
 spring:
   application:
     name: im-pos-service-order    # 项目名称尽量用小写

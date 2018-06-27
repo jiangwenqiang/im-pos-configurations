@@ -1,5 +1,3 @@
-server:
-  port: 8185
 spring:
   application:
     name: im-pos-service-entrance
