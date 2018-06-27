@@ -1,5 +1,5 @@
 server:
-  port: 8183
+  port: 8191
 spring:
   application:
     name: im-pos-service-promotion

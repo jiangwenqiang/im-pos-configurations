@@ -1,5 +1,5 @@
 server:
-  port: 8187
+  port: 8182
 spring:
   application:
     name: im-pos-service-common    # 项目名称尽量用小写

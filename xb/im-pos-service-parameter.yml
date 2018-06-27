@@ -1,5 +1,5 @@
 server:
-  port: 8186
+  port: 8190
 spring:
   application:
     name: im-pos-service-parameter    # 项目名称尽量用小写
