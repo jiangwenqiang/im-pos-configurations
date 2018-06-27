@@ -1,5 +1,5 @@
 server:
-  port: 8180                    # 指定该Eureka实例的端口
+  port: 8180
 spring:
   jmx:
     default-domain: im-pos-service-registeration
