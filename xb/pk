@@ -1,0 +1,72 @@
+#!/bin/bash
+# chkconfig: 2345 85 85
+# description: ssg-service is a micro-service component for lige short message service
+# processname: ssg-service
+# Created By: jiangwenqiang
+
+APPNAME="$2"
+APPPORT="$3"
+PID=$(ps x |grep java| grep ${APPNAME} | grep -v grep | awk '{print $1}')
+
+status() {
+  if [ "$PID" = "" ]; then
+  return 1
+  fi
+  ps -p $PID | grep "java"
+  return $?
+}
+
+case "$1" in
+    log)
+        tail -f ${APPNAME%%.*}.log
+        RETVAL=$?
+        ;;
+    start)
+        status
+        RETVAL=$?
+        if [ $RETVAL -eq 0 ]; then
+            echo "$APP_NAME exists, process is running"
+            #exit 1
+        fi
+        echo "Starting $APPNAME ..."
+        nohup java -server -Xms512m -Xmx512m -jar $APPNAME --server.port=${APPPORT} > ${APPNAME%%.*}.${APPPORT}.log 2>&1 &
+        RETVAL=$?
+        if [ $RETVAL -eq 0 ]; then
+            echo "$APPNAME is started"
+            exit 0
+        else
+            echo "stopping $APPNAME"
+            exit 1
+        fi
+        ;;
+    stop)
+        status
+        RETVAL=$?
+        if [ $RETVAL -eq 0 ]; then
+            echo "stopping $APPNAME"
+            kill -9 $PID
+            RETVAL=$?
+            if [ $RETVAL -eq 0 ]; then
+              echo "stopping $APPNAME succeed"
+            else
+                echo "stopping $APPNAME failed"
+            fi
+        fi
+        ;;
+    status)
+        status
+        RETVAL=$?
+        if [ $RETVAL -eq 0 ]; then
+            echo "$APPNAME is running ($PID)"
+        else
+            echo "$APPNAME is not running"
+        fi
+        ;;
+    restart)
+        $0 stop
+        $0 start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        ;;
+esac

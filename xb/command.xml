@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<General>
+	<configure CmdCode="1">
+		<CmdMemo>获取服务器时间</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>GBK</CmdInEncoder>
+		<CmdOutEncoder>GBK</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>*</Tran_Key_01>
+		<Tran_Sql_01>{call sp_gettime(?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>*</Tran_Para_01>
+		<Tran_ParaType_01>*</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg,fullTime</Tran_Col_01>
+		<Tran_ColType_01>i,s,s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="2">
+		<CmdMemo>获取收银机定义</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_findsyj(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,syjh,ipaddr,cdkey,version</Tran_Para_01>
+		<Tran_ParaType_01>s,s,s,s,s</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg,syjh,issryyy,ists,iszp,isxyk,isth,ispf,isprint,isdisp,iskey,printfs,sswrfs,printxe,datatime,dataspace,ipaddr,priv</Tran_Col_01>
+		<Tran_ColType_01>i,s,s,s,s,s,s,s,s,s,s,s,s,s,i,i,i,s,s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="3">
+		<CmdMemo>获取系统参数设置</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_getsyspara(?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt</Tran_Para_01>
+		<Tran_ParaType_01>s</Tran_ParaType_01>
+		<Tran_Col_01>code,name,value</Tran_Col_01>
+		<Tran_ColType_01>s,s,s</Tran_ColType_01>
+	</configure>
+
+  <configure CmdCode="4">
+		<CmdMemo>获取网上通知</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call SP_GETNEWS(?,?,?,?,?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,syjh</Tran_Para_01>
+		<Tran_ParaType_01>s,s</Tran_ParaType_01>
+		<Tran_Col_01>recode,remsg,seqno,rqsj,syyh,title,text</Tran_Col_01>
+		<Tran_ColType_01>i,s,i,s,s,s,s</Tran_ColType_01>
+	</configure>
+
+  <configure CmdCode="5">
+		<CmdMemo>删除网上通知</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call SP_DELNEWS(?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,seqno</Tran_Para_01>
+		<Tran_ParaType_01>s,i</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg</Tran_Col_01>
+		<Tran_ColType_01>i,s</Tran_ColType_01>
+	</configure>
+
+  <configure CmdCode="6">
+		<CmdMemo>获取命令任务</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call SP_GETTASK(?,?,?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,syjh</Tran_Para_01>
+		<Tran_ParaType_01>s,s</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg,seqno,type,keytext</Tran_Col_01>
+		<Tran_ColType_01>i,s,i,c,s</Tran_ColType_01>
+	</configure>
+
+  <configure CmdCode="7">
+		<CmdMemo>删除命令任务</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call SP_DELTASK(?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,seqno</Tran_Para_01>
+		<Tran_ParaType_01>s,i</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg</Tran_Col_01>
+		<Tran_ColType_01>i,s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="9">
+		<CmdMemo>查找工号</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_findoperator(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,gh</Tran_Para_01>
+		<Tran_ParaType_01>s,s</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg,gh,name,passwd,type,islogin,maxdate,role,yyygz,memo,operrange,isgrant,privth,privqx,privdy,privgj,priv,dpzkl,zpzkl,thxe,privje1,privje2,privje3,privje4,privje5,grantgz,funcmenu,pwdate</Tran_Col_01>
+		<Tran_ColType_01>i,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,f,f,f,s,s,s,s,s,s,s,s</Tran_ColType_01>
+	</configure>
+
+  <configure CmdCode="14">
+		<CmdMemo>修改员工密码</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_changepass(?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,gh,password</Tran_Para_01>
+		<Tran_ParaType_01>s,s,s</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg</Tran_Col_01>
+		<Tran_ColType_01>i,s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="15">
+		<CmdMemo>获取已送网小票信息</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_getinvoice(?,?,?,?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,syjh,jzrq</Tran_Para_01>
+		<Tran_ParaType_01>s,s,s</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg,maxinv,bs,je</Tran_Col_01>
+		<Tran_ColType_01>i,s,l,f,f</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="16">
+		<CmdMemo>获取已送网小票信息</CmdMemo>
+		<CmdType>httpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call FINDGOODSUNITS(?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,code</Tran_Para_01>
+		<Tran_ParaType_01>s,s</Tran_ParaType_01>
+		<Tran_Col_01>code,uid,unit,bzhl,barcode</Tran_Col_01>
+		<Tran_ColType_01>s,s,s,s,s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="18">
+		<CmdMemo>获得收银机付款模板</CmdMemo>
+		<CmdType>httpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_getsyjpaymode(?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,syjh</Tran_Para_01>
+		<Tran_ParaType_01>s,s</Tran_ParaType_01>
+		<Tran_Col_01>code,sjcode,level,name,type,iszl,isyy,ismj,isbank,minval,maxval,hl,zlhl,sswrfs,sswrjd,str1,str2,num1,num2</Tran_Col_01>
+		<Tran_ColType_01>s,s,s,s,s,s,s,s,s,f,f,f,f,s,f,s,s,f,f</Tran_ColType_01>
+	</configure>
+
+  <configure CmdCode="19">
+		<CmdMemo>获得收银机收银范围</CmdMemo>
+		<CmdType>httpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_getsyjrange(?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,syjh</Tran_Para_01>
+		<Tran_ParaType_01>s,s</Tran_ParaType_01>
+		<Tran_Col_01>gz</Tran_Col_01>
+		<Tran_ColType_01>s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="21">
+		<CmdMemo>检查收银员登录是否有效</CmdMemo>
+		<CmdType>httpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_checklogin(?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,syjh,syyh</Tran_Para_01>
+		<Tran_ParaType_01>s,s,s</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg</Tran_Col_01>
+		<Tran_ColType_01>i,s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="25">
+		<CmdMemo>获取班次信息</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_findpostime(?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt</Tran_Para_01>
+		<Tran_ParaType_01>s</Tran_ParaType_01>
+		<Tran_Col_01>code,name,btime,etime</Tran_Col_01>
+		<Tran_ColType_01>s,s,s,s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="27">
+		<CmdMemo>获得人员角色定义</CmdMemo>
+		<CmdType>httpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_getoperrole(?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt</Tran_Para_01>
+		<Tran_ParaType_01>s</Tran_ParaType_01>
+		<Tran_Col_01>code,operrange,isgrant,privth,privqx,privdy,privgj,
+		   priv,dpzkl,zpzkl,thxe,privje1,privje2,privje3,privje4,privje5,grantgz,funcmenu
+		  </Tran_Col_01>
+		<Tran_ColType_01>s,c,c,c,c,c,c,s,f,f,f,f,f,f,f,f,s,s</Tran_ColType_01>
+	</configure>
+
+ <configure CmdCode="28">
+		<CmdMemo>获得缴款模板定义</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_getpayinmode(?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt</Tran_Para_01>
+		<Tran_ParaType_01>s</Tran_ParaType_01>
+		<Tran_Col_01>code,name,type,base,hl,paycode</Tran_Col_01>
+		<Tran_ColType_01>s,s,c,f,f,s</Tran_ColType_01>
+	</configure>
+
+ <configure CmdCode="29">
+		<CmdMemo>获得电子秤条码格式定义</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_getdzcmode(?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt</Tran_Para_01>
+		<Tran_ParaType_01>s</Tran_ParaType_01>
+		<Tran_Col_01>symbol,length,symbolpos,symbollen,codepos,codelen,pricepos,pricelen,pricedec,quantitypos,quantitylen,quantitydec,timepos,timelen
+		</Tran_Col_01>
+		<Tran_ColType_01>s,i,i,i,i,i,i,i,i,i,i,i,i,i</Tran_ColType_01>
+	</configure>
+
+  <configure CmdCode="30">
+		<CmdMemo>获得管理架构信息</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_getmanageframe(?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt</Tran_Para_01>
+		<Tran_ParaType_01>s</Tran_ParaType_01>
+		<Tran_Col_01>gz,name,iscs</Tran_Col_01>
+		<Tran_ColType_01>s,s,c</Tran_ColType_01>
+	</configure>
+
+  <configure CmdCode="31">
+		<CmdMemo>获得顾客信息种类</CmdMemo>
+		<CmdType>httpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_getbuyerinfo(?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt</Tran_Para_01>
+		<Tran_ParaType_01>s</Tran_ParaType_01>
+		<Tran_Col_01>code,type,sjcode,name</Tran_Col_01>
+		<Tran_ColType_01>s,s,s,s</Tran_ColType_01>
+	</configure>
+
+  <configure CmdCode="32">
+		<CmdMemo>获得呼叫字典</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_getposcall(?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt</Tran_Para_01>
+		<Tran_ParaType_01>s</Tran_ParaType_01>
+		<Tran_Col_01>code,text</Tran_Col_01>
+		<Tran_ColType_01>s,s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="33">
+		<CmdMemo>获得商品信息列表</CmdMemo>
+		<CmdType>httpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_GETGOODSINFOLIST(?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,code,codetype,sql</Tran_Para_01>
+		<Tran_ParaType_01>s,s,c,s</Tran_ParaType_01>
+		<Tran_Col_01>barcode,gz,code,uid,type,name,catid,ppcode,unit,specinfo,bzhl,lsj,hyj,hyjzkfd,pfj,pfjzkfd,xxtax,xjjg,jgjd,minplsl,isuid,isbatch,issqkzk,isvipzk,iszs,isdzc,ispj,iszt,maxzkl,maxzke,fxm,managemode,memo,str1,str2,num1,num2,isxh,kcsl,popdjbh,poptype,poplsj,pophyj,poppfj,poplsjzkl,pophyjzkl,poppfjzkl,poplsjzkfd,pophyjzkfd,poppfjzkfd</Tran_Col_01>
+		<Tran_ColType_01>s,s,s,s,c,s,s,s,s,s,f,f,f,f,f,f,f,f,f,i,c,c,c,c,c,c,c,c,f,f,s,c,s,s,s,f,f,c,f,s,c,f,f,f,f,f,f,f,f,f</Tran_ColType_01>
+	</configure>
+
+  <configure CmdCode="35">
+		<CmdMemo>获取退货原商品信息</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_getbackgoodsinfo(?,?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,oldsyj,oldfphm,code,gz,uid</Tran_Para_01>
+		<Tran_ParaType_01>s,s,l,s,s,s</Tran_ParaType_01>
+		<Tran_Col_01>syjh,fphm,rowno,yyyh,barcode,code,type,gz,catid,ppcode,uid,batch,yhdjbh,name,unit,bzhl,sl,lsj,jg,hjje,hjzk,hydjbh,hyzke,hyzkfd,yhzke,yhzkfd,lszke,lszre,lszzk,lszzr,lszkfd,plzke,plzkfd,zsdjbh,zszke,zszkfd,mjzke,mjzkfd,mjdjbh,rulezke,rulezkfd,ruledjbh,sqkh,sqktype,sqkzkfd,isvipzk,xxtax,flag,yjhxcode,ysyjh,yfphm,fhdd,memo,str1,str2,str3,str4,str5,str6,str7,str8,str9,num1,num2,num3,num4,num5,num6,num7,num8,num9</Tran_Col_01>
+		<Tran_ColType_01>s,l,i,s,s,s,c,s,s,s,s,s,s,s,s,f,f,f,f,f,f,s,f,f,f,f,f,f,f,f,f,f,f,s,f,f,f,f,s,f,f,s,s,c,f,c,f,c,s,s,l,s,s,s,s,s,s,s,s,s,s,s,f,f,f,f,f,f,f,f,f</Tran_ColType_01>
+	</configure>
+
+  <configure CmdCode="37">
+		<CmdMemo>发送收银机状态</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_sendstatus(?,?,?,?,?,?,?,?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,syjh,fphm,status,netstatus,bc,syyh,bs,je,xjje</Tran_Para_01>
+		<Tran_ParaType_01>s,s,l,c,c,c,s,i,f,f</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg</Tran_Col_01>
+		<Tran_ColType_01>i,s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="38">
+		<CmdMemo>上传销售小票信息</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>4</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>one</Tran_Key_01>
+		<Tran_Sql_01>{call sp_sendsalehead(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>syjh,fphm,djlb,mkt,bc,rqsj,syyh,hykh,jfkh,thsq,ghsq,hysq,sqkh,sqktype,sqkzkfd,ysje,sjfk,zl,sswr_sysy,fk_sysy,hjzje,hjzsl,hjzke,hyzke,yhzke,lszke,buyerinfo,jdfhdd,salefphm,ljjf,bcjf,memo,str1,str2,str3,str4,str5,num1,num2,num3,num4,num5</Tran_Para_01>
+		<Tran_ParaType_01>s,i,c,s,c,s,s,s,s,s,s,s,s,s,f,f,f,f,f,f,f,i,f,f,f,f,s,s,s,f,f,s,s,s,s,s,s,f,f,f,f,f</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg,rseqno</Tran_Col_01>
+		<Tran_ColType_01>i,s,l+1</Tran_ColType_01>
+		<Cmd_Mode_02>MemoryCourse</Cmd_Mode_02>
+		<Sql_Type_02>*</Sql_Type_02>
+		<Tran_Key_02>two</Tran_Key_02>
+		<Tran_Sql_02>{call sp_sendsalegoods(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</Tran_Sql_02>
+		<Tran_Para_02>mkt,billno,rowno,yyyh,barcode,code,type,gz,catid,ppcode,uid,batch,yhdjbh,name,unit,bzhl,sl,lsj,jg,hjje,hjzk,hyzke,hyzkfd,yhzke,yhzkfd,lszke,lszre,lszzk,lszzr,lszkfd,plzke,plzkfd,zsdjbh,zszke,zszkfd,mjzke,mjzkfd,mjdjbh,rulezke,rulezkfd,ruledjbh,sqkh,sqktype,sqkzkfd,qtzke,isvipzk,xxtax,flag,yjhxcode,ysyjh,yfphm,fhdd,hydjbh,memo,str1,str2,str3,str4,str5,str6,str7,str8,str9,str10,num1,num2,num3,num4,num5,num6,num7,num8,num9,yrowno</Tran_Para_02>
+		<Tran_ParaType_02>s,l+1,i,s,s,s,s,s,s,s,s,s,s,s,s,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,s,f,f,f,f,s,f,f,s,s,s,f,f,c,f,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,f,f,f,f,f,f,f,f,f,f</Tran_ParaType_02>
+		<Tran_Col_02>retcode,retmsg</Tran_Col_02>
+		<Tran_ColType_02>i,s</Tran_ColType_02>
+		<Cmd_Mode_03>MemoryCourse</Cmd_Mode_03>
+		<Sql_Type_03>*</Sql_Type_03>
+		<Tran_Key_03>three</Tran_Key_03>
+		<Tran_Sql_03>{call sp_sendsalepay(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</Tran_Sql_03>
+		<Tran_Para_03>mkt,billno,syjh,fphm,rowno,paycode,payname,flag,ybje,hl,je,payno,batch,kye,idno,memo,str1,str2,num1,num2</Tran_Para_03>
+		<Tran_ParaType_03>s,l+1,s,f,i,s,s,c,f,f,f,s,s,f,s,s,s,s,f,f</Tran_ParaType_03>
+		<Tran_Col_03>retcode,retmsg</Tran_Col_03>
+		<Tran_ColType_03>i,s</Tran_ColType_03>
+		<Cmd_Mode_04>MemoryCourse</Cmd_Mode_04>
+		<Sql_Type_04>*</Sql_Type_04>
+		<Tran_Key_04>*</Tran_Key_04>
+		<Tran_Sql_04>{call sp_sendsaleok(?,?,?,?,?)}</Tran_Sql_04>
+		<Tran_Para_04>billno</Tran_Para_04>
+		<Tran_ParaType_04>l+1</Tran_ParaType_04>
+		<Tran_Col_04>retcode,retmsg,memo,value</Tran_Col_04>
+		<Tran_ColType_04>i,s,s,f</Tran_ColType_04>
+	</configure>
+
+	<configure CmdCode="41">
+		<CmdMemo>上传工作日志</CmdMemo>
+		<CmdType>httpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_sendwork(?,?,?,?,?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,seqno,rqsj,syjh,syyh,code,memo</Tran_Para_01>
+		<Tran_ParaType_01>s,l,s,s,s,s,s</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg</Tran_Col_01>
+		<Tran_ColType_01>i,s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="42">
+		<CmdMemo>上传呼叫信息</CmdMemo>
+		<CmdType>httpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_sendcall(?,?,?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,syjh,gh,code,text</Tran_Para_01>
+		<Tran_ParaType_01>s,s,s,s,s</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg</Tran_Col_01>
+		<Tran_ColType_01>i,s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="47">
+		<CmdMemo>获得菜单信息定义</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>*</Tran_Key_01>
+		<Tran_Sql_01>{call sp_getmenuinfo()}</Tran_Sql_01>
+		<Tran_Para_01>*</Tran_Para_01>
+		<Tran_ParaType_01>*</Tran_ParaType_01>
+		<Tran_Col_01>code,name,sjcode,level,mjflag,showflag,enableflag,workflag,helptext</Tran_Col_01>
+		<Tran_ColType_01>s,s,s,i,c,c,c,c,s</Tran_ColType_01>
+	</configure>
+
+	<configure CmdCode="48">
+		<CmdMemo>发送金卡日志</CmdMemo>
+		<CmdType>httpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>*</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call sp_sendbanklog(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,rowcode,rqsj,syjh,fphm,syyh,type,je,oldrq,oldtrace,cardno,trace,bankinfo,crc,retcode,retmsg,retbz</Tran_Para_01>
+		<Tran_ParaType_01>s,i,s,s,l,s,s,f,s,l,s,l,s,s,s,s,s</Tran_ParaType_01>
+		<Tran_Col_01>retcode,retmsg</Tran_Col_01>
+		<Tran_ColType_01>i,s</Tran_ColType_01>
+	</configure>
+	<configure CmdCode="53">
+		<CmdMemo>获得后台退货小票头</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call SP_GETBACKSALEHEAD(?,?,?)}</Tran_Sql_01>
+		<Tran_Para_01>mkt,syjh,code</Tran_Para_01>
+		<Tran_ParaType_01>s,s,s</Tran_ParaType_01>
+		<Tran_Col_01>syjh,fphm,djlb,mkt,bc,rqsj,syyh,hykh,jfkh,thsq,ghsq,hysq,sqkh,sqktype,sqkzkfd,ysje,sjfk,zl,sswr_sysy,fk_sysy,hjzje,hjzsl,hjzke,hyzke,yhzke,lszke,netbz,printbz,hcbz,buyerinfo,jdfhdd,salefphm,printnum,bcjf,memo,str1,str2,str3,str4,str5,num1,num2,num3,num4,num5
+		</Tran_Col_01>
+		<Tran_ColType_01>s,l,s,s,c,s,s,s,s,s,s,s,s,c,f,f,f,f,f,f,f,i,f,f,f,f,c,c,c,s,s,s,i,f,s,s,s,s,s,s,f,f,f,f,f
+		</Tran_ColType_01>
+</configure>
+
+<configure CmdCode="54">
+		<CmdMemo>获得后台退货小票明细</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call SP_GETBACKSALEDETAIL(?,?,?)}
+		</Tran_Sql_01>
+		<Tran_Para_01>mkt,syjh,code</Tran_Para_01>
+		<Tran_ParaType_01>s,s,s</Tran_ParaType_01>
+		<Tran_Col_01>syjh,fphm,rowno,yyyh,barcode,code,type,gz,catid,ppcode,uid,batch,yhdjbh,name,unit,bzhl,sl,lsj,jg,hjje,hjzk,hydjbh,hyzke,hyzkfd,yhzke,yhzkfd,lszke,lszre,lszzk,lszzr,lszkfd,plzke,plzkfd,zsdjbh,zszke,zszkfd,mjzke,mjzkfd,mjdjbh,rulezke,rulezkfd,ruledjbh,sqkh,sqktype,sqkzkfd,isvipzk,xxtax,flag,yjhxcode,ysyjh,yfphm,fhdd,memo,str1,str2,str3,str4,str5,str6,str7,str8,str9,num1,num2,num3,num4,num5,num6,num7,num8,num9
+		</Tran_Col_01>
+		<Tran_ColType_01>s,l,i,s,s,s,c,s,s,s,s,s,s,s,s,f,f,f,f,f,f,s,f,f,f,f,f,f,f,f,f,f,f,s,f,f,f,f,s,f,f,s,s,c,f,c,f,c,s,s,l,s,s,s,s,s,s,s,s,s,s,s,f,f,f,f,f,f,f,f,f
+		</Tran_ColType_01>
+</configure>
+
+<configure CmdCode="55">
+		<CmdMemo>获得后台退货付款明细</CmdMemo>
+		<CmdType>HttpCmd</CmdType>
+		<CmdDispatch>*</CmdDispatch>
+		<CmdTran>1</CmdTran>
+		<CmdInEncoder>UTF-8</CmdInEncoder>
+		<CmdOutEncoder>UTF-8</CmdOutEncoder>
+		<StartTrans>true</StartTrans>
+		<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+		<Sql_Type_01>MsSqlResultSet</Sql_Type_01>
+		<Tran_Key_01>default</Tran_Key_01>
+		<Tran_Sql_01>{call SP_GETBACKSALEPAYDETAIL(?,?,?)}
+		</Tran_Sql_01>
+		<Tran_Para_01>mkt,syjh,code</Tran_Para_01>
+		<Tran_ParaType_01>s,s,s</Tran_ParaType_01>
+		<Tran_Col_01>syjh,fphm,rowno,paycode,payname,flag,ybje,hl,je,payno,batch,kye,idno,memo,str1,str2,num1,num2
+		</Tran_Col_01>
+		<Tran_ColType_01>s,l,i,s,s,c,f,f,f,s,s,f,s,s,s,s,f,f
+		</Tran_ColType_01>
+</configure>
+
+<configure CmdCode="10">
+	<CmdMemo>查找会员卡号</CmdMemo>
+	<CmdType>HttpCmd</CmdType>
+	<CmdDispatch>*</CmdDispatch>
+	<CmdTran>1</CmdTran>
+	<CmdInEncoder>UTF-8</CmdInEncoder>
+	<CmdOutEncoder>UTF-8</CmdOutEncoder>
+	<StartTrans>true</StartTrans>
+	<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+	<Sql_Type_01>*</Sql_Type_01>
+	<Tran_Key_01>default</Tran_Key_01>
+	<Tran_Sql_01>{call sp_findcust(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</Tran_Sql_01>
+	<Tran_Para_01>mkt,jygs,track</Tran_Para_01>
+	<Tran_ParaType_01>s,s,s</Tran_ParaType_01>
+	<Tran_Col_01>retcode,retmsg,code,type,name,status,maxdate,track,memo,valuememo,ishy,iszk,isjf,func,zkl,value1,value2,value3,value4,value5,valstr1,valstr2,valstr3</Tran_Col_01>
+	<Tran_ColType_01>i,s,s,s,s,s,s,s,s,f,c,c,c,s,f,f,f,f,f,f,s,s,s</Tran_ColType_01>
+</configure>
+<configure CmdCode="11">
+	<CmdMemo>查找CRM促消</CmdMemo>
+	<CmdType>HttpCmd</CmdType>
+	<CmdDispatch>*</CmdDispatch>
+	<CmdTran>1</CmdTran>
+	<CmdInEncoder>UTF-8</CmdInEncoder>
+	<CmdOutEncoder>UTF-8</CmdOutEncoder>
+	<StartTrans>true</StartTrans>
+	<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+	<Sql_Type_01>*</Sql_Type_01>
+	<Tran_Key_01>default</Tran_Key_01>
+	<Tran_Sql_01>{call sp_findpmef(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</Tran_Sql_01>
+	<Tran_Para_01>mktcode,jygs,code,gz,uid,rule,catid,ppcode,rqsj,cardno,cardtype,isfjk,grouplist</Tran_Para_01>
+	<Tran_ParaType_01>s,s,s,s,s,s,s,s,s,s,s,s,s</Tran_ParaType_01>
+	<Tran_Col_01>retcode,retmsg,seqno,djbh,type,rule,mode,code,gz,uid,catid,ppcode,sl,yhspace,ksrq,jsrq,kssj,jssj,poplsj,pophyj,poppfj,poplsjzkl,pophyjzkl,poppfjzkl,poplsjzkfd,pophyjzkfd,poppfjzkfd,memo,str1,str2,str3,num1,num2,str5</Tran_Col_01>
+	<Tran_ColType_01>i,s,l,s,c,s,s,s,s,s,s,s,i,i,s,s,s,s,f,f,f,f,f,f,f,f,f,s,s,s,s,f,f,s</Tran_ColType_01>
+</configure>
+<configure CmdCode="999">
+	<CmdMemo>测试命令</CmdMemo>
+	<CmdType>HttpCmd</CmdType>
+	<CmdDispatch>*</CmdDispatch>
+	<CmdTran>1</CmdTran>
+	<CmdInEncoder>UTF-8</CmdInEncoder>
+	<CmdOutEncoder>UTF-8</CmdOutEncoder>
+	<StartTrans>true</StartTrans>
+	<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+	<Sql_Type_01>OracleResultSet</Sql_Type_01>
+	<Tran_Key_01>default</Tran_Key_01>
+	<Tran_Sql_01>{call SP_GETSALEMS.test(?,?,?,?,?)}</Tran_Sql_01>
+	<Tran_Para_01>mkt,datas</Tran_Para_01>
+	<Tran_ParaType_01>s,clo</Tran_ParaType_01>
+	<Tran_Col_01>retcode,retmsg,result:code;name</Tran_Col_01>
+	<Tran_ColType_01>i,s,$:s;s</Tran_ColType_01>
+</configure>
+
+<configure CmdCode="998">
+	<CmdMemo>测试命令</CmdMemo>
+	<CmdType>HttpCmd</CmdType>
+	<CmdDispatch>*</CmdDispatch>
+	<CmdTran>1</CmdTran>
+	<CmdInEncoder>UTF-8</CmdInEncoder>
+	<CmdOutEncoder>UTF-8</CmdOutEncoder>
+	<StartTrans>true</StartTrans>
+	<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+	<Sql_Type_01>OracleResultSet</Sql_Type_01>
+	<Tran_Key_01>default</Tran_Key_01>
+	<Tran_Sql_01>{call SP_GETSALEMS.test1(?,?,?)}</Tran_Sql_01>
+	<Tran_Para_01>mkt,datas</Tran_Para_01>
+	<Tran_ParaType_01>s,clo</Tran_ParaType_01>
+	<Tran_Col_01>cursor:code;name</Tran_Col_01>
+	<Tran_ColType_01>$:s;s</Tran_ColType_01>
+</configure>
+
+<configure CmdCode="45">
+	<CmdMemo>上传销售小票信息到CRM</CmdMemo>
+	<CmdType>HttpCmd</CmdType>
+	<CmdDispatch>*</CmdDispatch>
+	<CmdTran>4</CmdTran>
+	<CmdInEncoder>UTF-8</CmdInEncoder>
+	<CmdOutEncoder>UTF-8</CmdOutEncoder>
+	<StartTrans>true</StartTrans>
+	<Cmd_Mode_01>MemoryCourse</Cmd_Mode_01>
+	<Sql_Type_01>*</Sql_Type_01>
+	<Tran_Key_01>one</Tran_Key_01>
+	<Tran_Sql_01>{call java_sendsaleheadcrm(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</Tran_Sql_01>
+	<Tran_Para_01>syjh,fphm,djlb,mkt,jygs,bc,rqsj,syyh,hykh,hytype,jfkh,thsq,ghsq,hysq,sqkh,sqktype,sqkzkfd,ysje,sjfk,zl,sswr_sysy,fk_sysy,hjzje,hjzsl,hjzke,hyzke,yhzke,lszke,netbz,printbz,hcbz,hhflag,buyerinfo,jdfhdd,salefphm,printnum,bcjf,memo,str1,str2,num1,num2</Tran_Para_01>
+	<Tran_ParaType_01>s,l,c,s,s,c,s,s,s,s,s,s,s,s,s,c,f,f,f,f,f,f,f,i,f,f,f,f,c,c,c,c,s,s,s,i,f,s,s,s,f,f</Tran_ParaType_01>
+	<Tran_Col_01>retcode,retmsg,rseqno</Tran_Col_01>
+	<Tran_ColType_01>i,s,l+1</Tran_ColType_01>
+	<Cmd_Mode_02>MemoryCourse</Cmd_Mode_02>
+	<Sql_Type_02>*</Sql_Type_02>
+	<Tran_Key_02>two</Tran_Key_02>
+	<Tran_Sql_02>{call JAVA_SENDSALEGOODSCRM(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</Tran_Sql_02>
+	<Tran_Para_02>billno,syjh,fphm,rowno,yyyh,barcode,code,type,gz,catid,ppcode,uid,batch,yhdjbh,name,unit,bzhl,sl,lsj,jg,hjje,hjzk,hyzke,hyzkfd,yhzke,yhzkfd,lszke,lszre,lszzk,lszzr,lszkfd,plzke,plzkfd,zsdjbh,zszke,zszkfd,sqkh,sqktype,sqkzkfd,qtzke,isvipzk,xxtax,flag,yjhxcode,ysyjh,yfphm,fhdd,memo,str1,str2,str3,str4,str5,str6,str7,str8,str9,num1,num2</Tran_Para_02>
+	<Tran_ParaType_02>l+1,s,l,i,s,s,s,c,s,s,s,s,s,s,s,s,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,s,f,f,s,c,f,f,c,f,c,s,s,l,s,s,s,s,s,s,s,s,s,s,s,f,f</Tran_ParaType_02>
+	<Tran_Col_02>retcode,retmsg</Tran_Col_02>
+	<Tran_ColType_02>i,s</Tran_ColType_02>
+	<Cmd_Mode_03>MemoryCourse</Cmd_Mode_03>
+	<Sql_Type_03>*</Sql_Type_03>
+	<Tran_Key_03>three</Tran_Key_03>
+	<Tran_Sql_03>{call JAVA_SENDSALEPAYCRM(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</Tran_Sql_03>
+	<Tran_Para_03>billno,syjh,fphm,rowno,paycode,payname,flag,ybje,hl,je,payno,batch,kye,idno,memo,str1,str2,num1,num2</Tran_Para_03>
+	<Tran_ParaType_03>l+1,s,l,i,s,s,c,f,f,f,s,s,f,s,s,s,s,f,f</Tran_ParaType_03>
+	<Tran_Col_03>retcode,retmsg</Tran_Col_03>
+	<Tran_ColType_03>i,s</Tran_ColType_03>
+	<Cmd_Mode_04>MemoryCourse</Cmd_Mode_04>
+	<Sql_Type_04>*</Sql_Type_04>
+	<Tran_Key_04>*</Tran_Key_04>
+	<Tran_Sql_04>{call java_sendsaleokcrm(?,?,?,?,?)}</Tran_Sql_04>
+	<Tran_Para_04>billno</Tran_Para_04>
+	<Tran_ParaType_04>l+1</Tran_ParaType_04>
+	<Tran_Col_04>retcode,retmsg,memo,value</Tran_Col_04>
+	<Tran_ColType_04>i,s,s,f</Tran_ColType_04>
+</configure>
+</General>
