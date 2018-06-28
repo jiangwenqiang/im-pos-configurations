@@ -3,10 +3,6 @@ spring:
     name: im-pos-service-commod
   jmx:
     default-domain: im-pos-service-commod
-logging:
-  level:
-    root: INFO
-    tk.mybatis: TRACE
 mybatis:
     type-aliases-package: com.inmarket.pos.model
     mapper-locations: classpath*:mapper/*.xml
