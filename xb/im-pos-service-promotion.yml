@@ -6,6 +6,10 @@ spring:
   redis:
     host: 127.0.0.1
     password: 123456
+select:
+  cache:
+    timeout: 3600
+    refresh: 3580
 logging:
   level:
     root: INFO
