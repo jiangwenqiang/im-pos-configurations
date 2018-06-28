@@ -20,5 +20,4 @@ eureka:
   instance:
       preferIpAddress: true
 logging:
-  config: classpath:logback-spring.xml
-  file: ./log/commod
+  file: ./log/${spring.application.name}
