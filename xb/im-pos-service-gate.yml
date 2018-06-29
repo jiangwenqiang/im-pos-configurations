@@ -57,6 +57,9 @@ zuul:
     uaa:
       path: /oauth/**
       serviceId: im-pos-service-authorization
+    payment:
+      path: /payment/**
+      serviceId: im-pos-service-payment
   add-proxy-headers: true
 hystrix:
     command:
