@@ -8,7 +8,7 @@ impos:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8180/eureka/    # 指定注册中心的地址
+      defaultZone: http://registeration:8180/eureka/    # 指定注册中心的地址
   instance:
       preferIpAddress: true
       statusPageUrlPath: ${server.context-path}/info
