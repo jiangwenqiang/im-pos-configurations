@@ -5,10 +5,6 @@ spring:
     default-domain: im-pos-service-promotion
   redis:
     host: 127.0.0.1
-logging:
-  level:
-    root: INFO
-    tk.mybatis: TRACE
 impos:
   location: /Users/elnino/Workspace/runtime/
 mybatis:
