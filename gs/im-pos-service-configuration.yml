@@ -1,0 +1,15 @@
+server:
+  port: 8888
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/
+  instance:
+      preferIpAddress: true
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jiangwenqiang/im-pos-configurations
+          search-paths: xb

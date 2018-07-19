@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: im-pos-service-payment    # 项目名称尽量用小写
+  jmx:
+    default-domain: im-pos-service-payment
+wechat:
+  property:
+    url: http://192.168.102.23:8003/OLPay?
+    key: 0e0a5f998129720ac8381ba36d5f80ab
+    subcompany: 809
+    posid: 8888
+    paycode: '0355'
+    ReadTimeOut : 5000
+    ConnectTimeOut : 10000
+impos:
+    location: /opt/impos/
+mybatis:
+    mapper-locations: classpath*:mapper/*.xml
+    type-aliases-package: com.inmarket.pos.data.entityForNull
+    configuration:
+      jdbc-type-for-null: 'null'
+mapper:
+    mappers:
+      - com.inmarket.pos.data.util.MSMapper
+    not-empty: false
+    identity: MYSQL
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8180/eureka/    # 指定注册中心的地址
+  instance:
+      preferIpAddress: true

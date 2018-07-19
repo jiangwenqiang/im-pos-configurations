@@ -1,0 +1,68 @@
+server:
+  context-path: /impos
+spring:
+  application:
+    name: im-pos-service-gate
+  jmx:
+    default-domain: im-pos-service-gate
+logging:
+  level:
+    root: INFO
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8180/eureka/
+zuul:
+  host:
+      connect-timeout-millis: 5000
+      socket-timeout-millis: 10000
+      max-per-route-connections: 1000
+      max-total-connections: 1000
+  routes:
+    commod:
+      path: /commod/**
+      serviceId: im-pos-service-commod
+    promotion:
+      path: /promotion/**
+      serviceId: im-pos-service-promotion
+    order:
+      path: /order/**
+      serviceId: im-pos-service-order
+    management:
+      path: /management/**
+      serviceId: im-pos-service-management
+    parameter:
+      path: /parameter/**
+      serviceId: im-pos-service-parameter
+    trace:
+      path: /trace/**
+      serviceId: im-pos-service-trace
+    commodex:
+      path: /commodex/**
+      serviceId: im-pos-service-commod-extension
+    integration:
+      path: /integration/**
+      serviceId: im-pos-service-entrance
+    customer:
+      path: /customer/**
+      serviceId: im-pos-service-customer
+    common:
+      path: /common/**
+      serviceId: im-pos-service-common
+    coupon:
+      path: /coupon/**
+      serviceId: im-pos-service-coupon
+    uaa:
+      path: /oauth/**
+      serviceId: im-pos-service-authorization
+  add-proxy-headers: true
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 10000
+    threadpool:
+            default:
+                coreSize: 1000

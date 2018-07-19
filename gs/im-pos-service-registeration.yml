@@ -1,0 +1,14 @@
+server:
+  port: 8180                    # 指定该Eureka实例的端口
+spring:
+  jmx:
+    default-domain: im-pos-service-registeration
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: false
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}${server.context-path}/eureka/
