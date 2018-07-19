@@ -1,14 +1,10 @@
 server:
   port: 8187
-  tomcat:
-    accept-count: 1000 
-    max-threads: 1000
-    max-connections: 2000
 spring:
   application:
     name: im-pos-service-common    # 项目名称尽量用小写
   jmx:
-    default-domain: im-pos-service-commod
+    default-domain: im-pos-service-common
 impos:
   location: /Users/elnino/Workspace/runtime/
 eureka:
@@ -17,5 +13,3 @@ eureka:
       defaultZone: http://localhost:8180/eureka/    # 指定注册中心的地址
   instance:
       preferIpAddress: true
-      statusPageUrlPath: ${server.context-path}/info
-      healthCheckUrlPath: ${server.context-path}/health
