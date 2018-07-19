@@ -12,8 +12,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8180/eureka/
-  instance:
-    hostname: im-pos-service-hub
 zuul:
   host:
       connect-timeout-millis: 5000
