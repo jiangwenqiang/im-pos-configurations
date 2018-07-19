@@ -3,10 +3,9 @@ spring:
     name: im-pos-service-management    # 项目名称尽量用小写
   jmx:
     default-domain: im-pos-service-management
-logging:
-  level:
-    root: INFO 
-    tk.mybatis: INFO
+  redis:
+    host: 127.0.0.1
+    password: 123456
 mybatis:
     type-aliases-package: com.inmarket.pos.model
     mapper-locations: classpath*:mapper/*.xml

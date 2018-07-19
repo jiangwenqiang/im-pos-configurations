@@ -5,10 +5,9 @@ spring:
     name: im-pos-service-coupon    # 项目名称尽量用小写
   jmx:
     default-domain: im-pos-service-coupon
-logging:
-  grade:
-    root: INFO
-    tk.mybatis: TRACE
+  redis:
+    host: 127.0.0.1
+    password: 123456
 impos:
   location: /opt/impos/
 mybatis:
