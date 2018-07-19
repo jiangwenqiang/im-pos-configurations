@@ -20,4 +20,4 @@ eureka:
   instance:
       preferIpAddress: true
 logging:
-  file: ./log/${spring.application.name}
+  file: ${spring.application.name}
