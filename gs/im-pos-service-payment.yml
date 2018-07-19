@@ -3,6 +3,9 @@ spring:
     name: im-pos-service-payment    # 项目名称尽量用小写
   jmx:
     default-domain: im-pos-service-payment
+  redis:
+    host: 127.0.0.1
+    password: 123456
 wechat:
   property:
     url: http://192.168.102.23:8003/OLPay?

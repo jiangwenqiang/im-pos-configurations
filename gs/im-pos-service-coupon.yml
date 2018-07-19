@@ -1,5 +1,3 @@
-server:
-  port: 8188
 spring:
   application:
     name: im-pos-service-coupon    # 项目名称尽量用小写
