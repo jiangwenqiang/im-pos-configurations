@@ -1,31 +1,54 @@
+server:
+  port: 8184
 spring:
   application:
-    name: im-pos-service-promotion
+    name: im-pos-service-promotion    # 项目名称尽量用小写
   jmx:
     default-domain: im-pos-service-promotion
   redis:
     host: 127.0.0.1
+select:
+  cache:
+    timeout: 3600
+    refresh: 3580
+logging:
+  path: logs
+  file: ${spring.application.name}
 impos:
-  location: /Users/elnino/Workspace/runtime/
+  location: /Users/original/workspace/runtime/
+  promotion:
+    sync-scales: true
+  modules:
+  - com.inmarket.pos.data.access.oracle.OracleAccess
+  - com.inmarket.pos.business.logic.SaleBusiness3
+  - com.inmarket.pos.business.core.business.SaleBusiness
+  - com.inmarket.pos.service.promotion.module.Normal
+  - com.inmarket.pos.service.promotion.module.Rule
+  - com.inmarket.pos.service.promotion.module.Promotion
+  - com.inmarket.pos.service.promotion.module.Promotions
+  - com.inmarket.pos.service.promotion.module.Discount
+  - com.inmarket.pos.service.promotion.module.Discounts
 mybatis:
-    type-aliases-package: om.inmarket.pos.data.entity
-    mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.inmarket.pos.model.entities
+  mapper-locations: classpath*:mapper/*.xml
 mapper:
-    mappers:
-      - com.inmarket.pos.data.util.MSMapper
-    not-empty: false
-    identity: ORACLE
+  mappers:
+  - com.inmarket.pos.data.util.MSMapper
+  not-empty: false
+  identity: ORACLE
+endpoints:
+  sensitive: false
+info:
+  version: '180718.SNAPSHOT'
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8180/eureka/    # 指定注册中心的地址
   instance:
-      preferIpAddress: true
+    preferIpAddress: true
 jedis:
-    host :  127.0.0.1
-    port : 6379
-    password: 123456
-    maxTotal: 100
-    maxIdle: 10
-    maxWaitMillis : 100000
-
+  host :  127.0.0.1
+  port : 6379
+  maxTotal: 100
+  maxIdle: 10
+  maxWaitMillis : 100000
